@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Opportunity Worksheet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        textarea, input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Opportunity Worksheet</h2>
+        <form>
+            <label for="name">Name of Opportunity:</label>
+            <input type="text" id="name" name="name">
+
+            <label for="rfq">RFQ or Proposal:</label>
+            <input type="text" id="rfq" name="rfq">
+
+            <label for="agency">Agency:</label>
+            <input type="text" id="agency" name="agency">
+
+            <label for="description">Description of the Opportunity:</label>
+            <textarea id="description" name="description" rows="3"></textarea>
+
+            <label for="value">Total Estimated Value of the Opportunity:</label>
+            <input type="text" id="value" name="value">
+
+            <label for="due_date">Submission Due Date:</label>
+            <input type="date" id="due_date" name="due_date">
+
+            <label>Opportunity Checklist:</label>
+            <label><input type="checkbox" name="questions_submitted"> Have You Submitted All Questions By The Due Date?</label>
+            <label><input type="checkbox" name="understand_documents"> Do You Understand Required Documents and Order of Documents For Submission?</label>
+            <label><input type="checkbox" name="written_explanation"> Does the Opportunity Require a Written Explanation of How You Plan To Fulfill Contract?</label>
+            <label><input type="checkbox" name="certifications_required"> Does the State Require Special Certifications or Qualifications To Bid?</label>
+            <label><input type="checkbox" name="multiple_year"> Is this a Multiple Year Contract?</label>
+            <label><input type="checkbox" name="inflation_amendments"> Does Contract Include or Consider Inflation or Price Increase Amendments?</label>
+            <label><input type="checkbox" name="obsolete_check"> Can the Product Become Obsolete or Antiquated Before Contract Completion?</label>
+            <label><input type="text" name="clauses" placeholder="If so, What Clauses Have You Put in Place?"></label>
+            <label><input type="checkbox" name="state_preference"> Does This State Give Special Preference to Businesses Within the State?</label>
+            <label><input type="text" name="service_commitment" placeholder="Service Commitment After Contract Expiry"></label>
+            <label><input type="checkbox" name="insurance_required"> Does the Contract Require Insurance or Bonding?</label>
+            <label><input type="checkbox" name="state_fees"> Does this State have Special Fees or Taxes That Apply?</label>
+            <label><input type="checkbox" name="far_fulfilled"> Have You Reviewed and Fulfilled all the FAR Requirements?</label>
+
+            <label for="certifications">State's Certification/Qualification Requirements:</label>
+            <textarea id="certifications" name="certifications" rows="3"></textarea>
+
+            <label><input type="checkbox" name="partners_required"> Does the Opportunity Require Partners or Subcontractors?</label>
+            <label><input type="checkbox" name="sub_info_included"> Have you Included All Required Subcontract Information?</label>
+            <label><input type="checkbox" name="contracts_in_place"> Do you have the Appropriate Contracts in Place with Partners/Subcontractors?</label>
+            <label><input type="checkbox" name="insurance_bonding"> Any Insurance or Bonding Requirements?</label>
+
+            <label for="challenges">Challenges with the Opportunity:</label>
+            <textarea id="challenges" name="challenges" rows="3"></textarea>
+
+            <label for="solutions">Potential Solutions For the Challenges:</label>
+            <textarea id="solutions" name="solutions" rows="3"></textarea>
+
+            <label for="completion">Items Left to Complete Before Submitting:</label>
+            <textarea id="completion" name="completion" rows="3"></textarea>
+
+            <label for="announcement">When are Rewards Results Projected To Be Announced?</label>
+            <input type="date" id="announcement" name="announcement">
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
