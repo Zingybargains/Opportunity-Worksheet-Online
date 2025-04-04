@@ -129,22 +129,48 @@
   });
 </script>
     <script>
-  function downloadPDF() {
-    const element = document.querySelector(".container");
+ 
+function downloadPDF() {
+  // Clone the container so we don't mess up the visible form
+  const original = document.querySelector(".container");
+  const clone = original.cloneNode(true);
 
-    html2pdf()
-      .set({
-        margin: 10,
-        filename: 'Opportunity_Worksheet.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2 },
-        jsPDF: { unit: 'mm', format: 'letter', orientation: 'portrait' }
-      })
-      .from(element)
-      .save();
-  }
+  // Replace all inputs and textareas with their values
+  const inputs = clone.querySelectorAll("input, textarea");
+  inputs.forEach(input => {
+    const span = document.createElement("span");
+
+    if (input.type === "checkbox") {
+      span.textContent = input.checked ? "✅ " + input.parentElement.textContent.trim() : "";
+    } else if (input.type === "date") {
+      span.textContent = input.value ? new Date(input.value).toLocaleDateString() : "";
+    } else {
+      span.textContent = input.value;
+    }
+
+    const label = input.closest("label");
+    if (label && input.type !== "checkbox") {
+      label.replaceChild(span, input);
+    } else if (input.type === "checkbox" && input.checked) {
+      input.parentElement.replaceChild(span, input);
+    } else {
+      input.remove(); // Remove unchecked checkboxes
+    }
+  });
+
+  // Generate PDF from the modified clone
+  html2pdf()
+    .set({
+      margin: 10,
+      filename: 'Opportunity_Worksheet.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'mm', format: 'letter', orientation: 'portrait' }
+    })
+    .from(clone)
+    .save();
+}
 </script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <script>
   form.addEventListener("submit", function(e) {
