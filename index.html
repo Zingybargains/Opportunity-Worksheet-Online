@@ -39,7 +39,8 @@
 <body>
     <div class="container">
         <h2>Opportunity Worksheet</h2>
-        <form>
+       <form method="POST" action="https://script.google.com/macros/s/AKfycbxGG6WSC3wvJYmA0WBH0MX9FTsVRRdKDSiXVn9U113fuR8PtJOpO0QHLHLv6ZOYIqrh/exec">
+
             <label for="name">Name of Opportunity:</label>
             <input type="text" id="name" name="name">
 
@@ -95,8 +96,11 @@
 
             <button type="submit">Submit</button>
             <button type="button" onclick="downloadPDF()">Download as PDF</button>
+<div id="confirmation-message" style="display:none; margin-top: 10px; color: green; font-weight: bold;">
+    Thank you! Your submission has been received.
+</div>
 
-        </form>
+       </form>
     </div>
     <script>
   const form = document.querySelector("form");
@@ -142,5 +146,26 @@
 </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script>
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    fetch(form.action, {
+      method: "POST",
+      body: formData,
+    })
+    .then(response => {
+      document.getElementById("confirmation-message").style.display = "block";
+      form.reset(); // Optional: clears form
+      localStorage.clear(); // Optional: clears saved fields
+    })
+    .catch(error => {
+      alert("There was an error submitting the form. Please try again.");
+      console.error("Submission error:", error);
+    });
+  });
+</script>
+
 </body>
 </html>
