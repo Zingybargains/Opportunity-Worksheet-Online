@@ -96,5 +96,31 @@
             <button type="submit">Submit</button>
         </form>
     </div>
+    <script>
+  const form = document.querySelector("form");
+  const inputs = form.querySelectorAll("input, textarea");
+
+  // Restore saved data on load
+  window.addEventListener("load", () => {
+    inputs.forEach(input => {
+      if (input.type === "checkbox") {
+        input.checked = localStorage.getItem(input.name) === "true";
+      } else {
+        input.value = localStorage.getItem(input.name) || "";
+      }
+    });
+  });
+
+  // Save on change
+  inputs.forEach(input => {
+    input.addEventListener("input", () => {
+      if (input.type === "checkbox") {
+        localStorage.setItem(input.name, input.checked);
+      } else {
+        localStorage.setItem(input.name, input.value);
+      }
+    });
+  });
+</script>
 </body>
 </html>
