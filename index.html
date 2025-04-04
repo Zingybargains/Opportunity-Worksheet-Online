@@ -94,6 +94,8 @@
             <input type="date" id="announcement" name="announcement">
 
             <button type="submit">Submit</button>
+            <button type="button" onclick="downloadPDF()">Download as PDF</button>
+
         </form>
     </div>
     <script>
@@ -122,5 +124,23 @@
     });
   });
 </script>
+    <script>
+  function downloadPDF() {
+    const element = document.querySelector(".container");
+
+    html2pdf()
+      .set({
+        margin: 10,
+        filename: 'Opportunity_Worksheet.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'letter', orientation: 'portrait' }
+      })
+      .from(element)
+      .save();
+  }
+</script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </body>
 </html>
